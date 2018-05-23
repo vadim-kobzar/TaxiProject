@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="../../main.css">
+        <link rel="stylesheet" href="admin.css">
+        <title>Dashboard Template for Bootstrap</title>
+    </head>
+
+    <body>
+        <div id="header"></div>
+        <div class="container-fluid">
+            <div class="row">
+                <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+                    <div class="sidebar-sticky bg-dark">
+                        <ul class="nav flex-column font">
+                            <li class="nav-item">
+                                <button class="btn btn-outline-success my-2 my-sm-0" type="button" onclick="showDoshboard()">Dashboard</button>
+
+                            </li>
+                            <li class="nav-item">
+                                <button class="btn btn-outline-success my-2 my-sm-0" type="button" onclick="showNotif()">Notifications</button>
+
+                            </li>
+                            <li>
+                                <button class="btn btn-outline-success my-2 my-sm-0" type="button" data-toggle="collapse" href="#collapse-car-settings">
+                                    Car Settings
+                                </button>
+                                <div id="collapse-car-settings" class="panel-collapse collapse">
+                                    <ul class="list-group">
+                                        <li>
+                                            <button class="list-group-item btn btn-outline-success my-2 my-sm-0 " data-toggle="collapse" onclick="addTaxiForm()">Add Taxi</button>
+                                        </li>
+                                        <li>
+                                            <button class="list-group-item btn btn-outline-success my-2 my-sm-0 " data-toggle="collapse" onclick="manageTaxi()">Manage Taxi</button>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li>
+                                <button class="btn btn-outline-success my-2 my-sm-0" type="button" data-toggle="collapse" href="#collapse-company-settings">
+                                    Company Settings
+                                </button>
+                                <div id="collapse-company-settings" class="panel-collapse collapse">
+                                    <ul class="list-group">
+                                        <li>
+                                            <button class="list-group-item btn btn-outline-success my-2 my-sm-0" href="#collapse2" id="login-button" type="button" onclick="addEmployeeForm()">Add Employee </button>
+                                            <button class="list-group-item btn btn-outline-success my-2 my-sm-0" href="#collapse2" id="login-button" type="button" onclick="manageEmployee()">Manage Employee </button>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <button class="btn btn-outline-success my-2 my-sm-0" id="login-button" type="button" onclick="showDoshboard()">General Settings</button>
+
+                            </li>
+
+                            <li class="nav-item">
+                                <button class="btn btn-outline-success my-2 my-sm-0" id="login-button" type="button" onclick="showDoshboard()">View Rating</button>
+
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+
+                <main role="main" id="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+                    <p>Dashboard</p>
+                </main>
+            </div>
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/js/bootstrap.min.js"></script>
+        <script src="admin.js"></script>
+
+    </body>
+
+</html>
