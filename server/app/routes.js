@@ -1,11 +1,12 @@
 const fs = require('fs');
 const nodeMailer = require("nodemailer");
 const jwt = require('jsonwebtoken');
-const config = require('../config');
+const config = require('../config'); //require config
 const verifyToken = require('../verifyToken');
 
 const fileName = '../db.json';
 
+//mail transport
 let transporter = nodeMailer.createTransport({
     host: 'smtp.gmail.com',
     port: 465,
@@ -38,6 +39,7 @@ module.exports = function (app) {
         response.sendFile('./static/index.html');
     });
 
+    //login 
     app.post('/login', function (req, res) {
         let email = req.body.email;
         let pass = req.body.password;
@@ -56,7 +58,9 @@ module.exports = function (app) {
             });
         });
     });
-    app.post('/createUser', function (req, res) {
+
+    //create user 
+    app.post('/createUser', verifyToken, function (req, res) {
         let email = req.body.email;
         let name = req.body.name;
         let phone = req.body.phone;
@@ -69,10 +73,11 @@ module.exports = function (app) {
             pass: ""
         });
 
+        //write file new employee 
         writeFile(employee, 'users')
 
+        //mail options and link
         let link = 'http://' + req.get('host') + '/static/pages/adminPage/verify.html?id=' + Math.floor((Math.random() * 100) + 54) + '&email=' + email;
-
         let mailOptions = {
             from: 'Taxi', // sender address
             to: email, // list of receivers
@@ -80,6 +85,7 @@ module.exports = function (app) {
             html: 'Hello,<br> Please Click on the link to verify your email.<br><a href=' + link + '>Click here to verify</a>'
         };
 
+        //send mail
         transporter.sendMail(mailOptions, (err) => {
             if (err) {
                 console.log(err);
@@ -90,12 +96,13 @@ module.exports = function (app) {
             }
         });
     });
+
+    //add car   
     app.post('/addCar', verifyToken, function (req, res) {
         console.log(req.userId);
         let mark = req.body.mark;
         let year = req.body.year;
         let number = req.body.number;
-        console.log(number);
         let carDriver = req.body.carDriver
         car = new Car({
             mark: mark,
@@ -110,10 +117,13 @@ module.exports = function (app) {
 
 }
 
+//
 function getUser(users, email, pass) {
     if (!users || !Array.isArray(users) || !email || !pass) return;
     return users.find(user => user.email === email && user.password === +pass);
 }
+
+//
 function writeFile(item, tableName) {
     let fs = require('fs');
     fs.readFile(fileName, function readFileCallback(err, data) {

@@ -79,14 +79,15 @@ function addEmployee() {
         phone: phone,
         role: role
     });
-
     $.ajax({
         type: 'POST',
         data: JSON.stringify(user),
         contentType: 'application/json',
         url: 'http://localhost:3000/createUser',
+        headers: {
+            'token': localStorage.getItem('token')
+        },
         success: function (data) {
-
             console.log('success');
             console.log(data);
             return false;

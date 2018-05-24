@@ -57,7 +57,6 @@ body main {
 
   [role="main"] {
     padding-top: 60px; /* Space for fixed navbar */
-    overflow: hidden;
   }
   
   
@@ -85,8 +84,6 @@ body main {
   .border-top { border-top: 1px solid #e5e5e5; }
   .border-bottom { border-bottom: 1px solid #e5e5e5; }
 
-
-
   .divider-text {
     position: relative;
     text-align: center;
@@ -109,18 +106,20 @@ body main {
     z-index: 1;
 }
 
-.btn-facebook {
-    background-color: #405D9D;
-    color: #fff;
-}
-.btn-twitter {
-    background-color: #42AEEC;
-    color: #fff;
-}
-
 .card.bg-light {
-  height: calc(100vh - 190px);
+    height: calc(100vh - 190px);
     margin: 0px 20%;
     min-height: 400px;
 }
 
+.btn-css {
+    background-color: transparent;
+    color: #fff;
+    width: 100%;
+    text-align: left
+}
+
+.list-group-item.btn.btn-css.my-sm-0 {
+  background-color: #424649;
+  font-size: 0.9rem;
+}  
