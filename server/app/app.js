@@ -27,16 +27,16 @@ function Employee(employee) {
     this.pass = employee.pass
 }
 
-function Car(car) {
-    this.mark = car.mark;
-    this.year = car.year;
-    this.number = car.number;
-    this.carDriver = car.carDriver
-}
-
 module.exports = function (app) {
-    app.get('/', function (request, response) {
-        response.sendFile('./static/index.html');
+    require('./routes/car/car')(app);
+    require('./routes/dispatcher/dispatcher')(app);
+    require('./routes/driver/driver')(app);
+    require('./routes/order/order')(app); 
+
+    app.get('/verify', function(req, res) {
+        res.sendFile('admin/verify.html', {
+            email: req.params.email
+        });
     });
 
     //login 
@@ -70,7 +70,7 @@ module.exports = function (app) {
             email: email,
             phone: phone,
             role: role,
-            pass: ""
+            pass: ''
         });
 
         //write file new employee 
@@ -89,12 +89,13 @@ module.exports = function (app) {
         transporter.sendMail(mailOptions, (err) => {
             if (err) {
                 console.log(err);
-                res.json('error');
             } else {
                 console.log("Message sent: " + res.message);
-                res.json('ok');
             }
         });
+        res.json({
+            status: 'ok'
+        })
     });
 
     //add car   
@@ -133,7 +134,7 @@ function writeFile(item, tableName) {
             let obj = JSON.parse(data);
             obj[tableName].push(item);
             let json = JSON.stringify(obj);
-            fs.writeFile(fileName, json);
+            fs.writeFileSync(fileName, json);
         }
     });
 }

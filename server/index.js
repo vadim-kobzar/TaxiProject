@@ -9,7 +9,7 @@ app.use(bodyParser.json());
 app.use(cors());
 app.use(express.static('static'));
 
-require('./app/routes.js')(app); // load our routes and pass in our app and fully configured passport
+require('./app/app.js')(app); // load our routes and pass in our app and fully configured passport
 
 app.listen(port, function (err) {
     if (err) {
