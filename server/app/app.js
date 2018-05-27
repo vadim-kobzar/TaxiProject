@@ -17,23 +17,13 @@ let transporter = nodeMailer.createTransport({
     }
 });
 
-let employee, car;
-
-function Employee(employee) {
-    this.name = employee.name;
-    this.email = employee.email;
-    this.phone = employee.phone;
-    this.role = employee.role;
-    this.pass = employee.pass
-}
-
 module.exports = function (app) {
     require('./routes/car/car')(app);
     require('./routes/dispatcher/dispatcher')(app);
     require('./routes/driver/driver')(app);
-    require('./routes/order/order')(app); 
+    require('./routes/order/order')(app);
 
-    app.get('/verify', function(req, res) {
+    app.get('/verify', function (req, res) {
         res.sendFile('admin/verify.html', {
             email: req.params.email
         });
@@ -101,14 +91,16 @@ module.exports = function (app) {
     //add car   
     app.post('/addCar', verifyToken, function (req, res) {
         console.log(req.userId);
-        let mark = req.body.mark;
         let year = req.body.year;
         let number = req.body.number;
+        let color = req.body.color;
+        let model = req.body.model;
         let carDriver = req.body.carDriver
         car = new Car({
-            mark: mark,
             year: year,
             number: number,
+            color: color,
+            model: model,
             carDriver: carDriver
         });
 

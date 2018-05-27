@@ -11,21 +11,24 @@ module.exports = function (app) {
                 number: '13oo013',
                 color: 'blue',
                 model: 'C 240',
-                brand: 'Mercedes-Benz'
+                brand: 'Mercedes-Benz',
+                carDriver: '5'
             },
             {
                 id: 2,
                 number: '35uu047',
                 color: 'red',
                 model: 'Vectra 20',
-                brand: 'Opel'
+                brand: 'Opel',
+                carDriver: '4'
             },
             {
                 id: 3,
                 number: '35ss111',
                 color: 'gray',
                 model: 'TT',
-                brand: 'Audi'
+                brand: 'Audi',
+                carDriver: '1'
             }
         ]);
     });
@@ -38,7 +41,8 @@ module.exports = function (app) {
                 number: '13oo013',
                 color: 'blue',
                 model: 'C 240',
-                brand: 'Mercedes-Benz'
+                brand: 'Mercedes-Benz',
+                carDriver: '5'
             },
             {
                 id: 2,
@@ -46,7 +50,8 @@ module.exports = function (app) {
                 color: 'red',
                 model: 'Vectra 20',
                 brand: 'Opel',
-                carDriver: '2'
+                carDriver: '2',
+                carDriver: '4'
             },
             {
                 id: 3,

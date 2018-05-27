@@ -1,12 +1,12 @@
 class Car {
-    constructor(car){
+    constructor(car) {
         this.year = car.year;
         this.number = car.number;
-        this.carDriver = car.carDriver
         this.color = car.color;
         this.model = car.model;
         this.brand = car.brand;
-    } 
+        this.carDriver = car.carDriver;
+    }
 }
 
-module.exports = Car;
+module.exports = Car;       
